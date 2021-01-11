@@ -1,0 +1,11 @@
+<div class="list" (dragover)="allowDrop($event)" (drop)="drop($event)">
+	<h3>{{list.name}}</h3>
+	<div class="cards">
+		<app-card *ngFor="let cardId of list.cards" [card]="cardStore.getCard(cardId)"></app-card>
+	</div>
+	
+	<input #addCardInput type="text" (keyup.enter)="onEnter(addCardInput.value); addCardInput.value=''; displayAddCard=false;" *ngIf="displayAddCard" autofocus>
+	<hr>
+	<button type="button" class="btn btn-outline-success btn-sm" (click)="toggleDisplayAddCard();">New Card</button>
+	
+</div>
